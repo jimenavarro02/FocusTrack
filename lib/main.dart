@@ -4,6 +4,7 @@ void main() {
   runApp(const FocusTrackApp());
 }
 
+<<<<<<< HEAD
 /// Niveles de prioridad de la sesión (Reto 1).
 enum Prioridad {
   baja('Baja', Icons.arrow_downward, Color(0xFF78909C), Colors.white),
@@ -22,6 +23,11 @@ enum Prioridad {
 class FocusTrackApp extends StatelessWidget {
   const FocusTrackApp({super.key});
 
+=======
+/// Widget raiz inmutable que configura el tema visual de la aplicacion
+class FocusTrackApp extends StatelessWidget {
+  const FocusTrackApp({super.key});
+>>>>>>> 067ea726ee40c644581ac032d6014b50fa131d99
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,6 +36,7 @@ class FocusTrackApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
+<<<<<<< HEAD
           seedColor: const Color(0xFF1A237E), // Azul Índigo Universitario
           brightness: Brightness.light,
         ),
@@ -37,12 +44,19 @@ class FocusTrackApp extends StatelessWidget {
           centerTitle: true,
           elevation: 2,
         ),
+=======
+          seedColor: const Color(0xFF00796B), // Verde Esmeralda
+          brightness: Brightness.light,
+        ),
+        appBarTheme: const AppBarTheme(centerTitle: true, elevation: 2),
+>>>>>>> 067ea726ee40c644581ac032d6014b50fa131d99
       ),
       home: const PantallaPrincipalMetas(),
     );
   }
 }
 
+<<<<<<< HEAD
 /// Pantalla con estado reactivo para registrar metas y productividad.
 class PantallaPrincipalMetas extends StatefulWidget {
   const PantallaPrincipalMetas({super.key});
@@ -60,6 +74,19 @@ class _PantallaPrincipalMetasState extends State<PantallaPrincipalMetas> {
   String _nivelProductividad = 'Inicial';
   Prioridad _prioridad = Prioridad.media;
 
+=======
+/// Pantalla con estado reactivo para registrar metas y productividad
+class PantallaPrincipalMetas extends StatefulWidget {
+  const PantallaPrincipalMetas({super.key});
+  @override
+  State<PantallaPrincipalMetas> createState() => _PantallaPrincipalMetasState();
+}
+
+class _PantallaPrincipalMetasState extends State<PantallaPrincipalMetas> {
+  int _metasCompletadas = 0;
+  final int _metaObjetivo = 5;
+  String _nivelProductividad = 'Inicial';
+>>>>>>> 067ea726ee40c644581ac032d6014b50fa131d99
   void _actualizarNivel() {
     if (_metasCompletadas == 0) {
       _nivelProductividad = 'Inicial';
@@ -74,6 +101,7 @@ class _PantallaPrincipalMetasState extends State<PantallaPrincipalMetas> {
   }
 
   void _incrementarMeta() {
+<<<<<<< HEAD
     // Reto 2: bloqueo seguro al llegar al máximo.
     if (_metasCompletadas >= _limiteMaximo) {
       ScaffoldMessenger.of(context)
@@ -89,6 +117,8 @@ class _PantallaPrincipalMetasState extends State<PantallaPrincipalMetas> {
         );
       return;
     }
+=======
+>>>>>>> 067ea726ee40c644581ac032d6014b50fa131d99
     setState(() {
       _metasCompletadas++;
       _actualizarNivel();
@@ -105,7 +135,11 @@ class _PantallaPrincipalMetasState extends State<PantallaPrincipalMetas> {
   }
 
   void _reiniciarContadores() {
+<<<<<<< HEAD
     showDialog<void>(
+=======
+    showDialog(
+>>>>>>> 067ea726ee40c644581ac032d6014b50fa131d99
       context: context,
       builder: (BuildContext ctx) {
         return AlertDialog(
@@ -140,6 +174,7 @@ class _PantallaPrincipalMetasState extends State<PantallaPrincipalMetas> {
     );
   }
 
+<<<<<<< HEAD
   /// Reto 1: texto informativo según la prioridad elegida.
   String _descripcionPrioridad(Prioridad p) {
     switch (p) {
@@ -152,12 +187,17 @@ class _PantallaPrincipalMetasState extends State<PantallaPrincipalMetas> {
     }
   }
 
+=======
+>>>>>>> 067ea726ee40c644581ac032d6014b50fa131d99
   @override
   Widget build(BuildContext context) {
     final tema = Theme.of(context);
     final colores = tema.colorScheme;
     final porcentaje = (_metasCompletadas / _metaObjetivo).clamp(0.0, 1.0);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 067ea726ee40c644581ac032d6014b50fa131d99
     return Scaffold(
       appBar: AppBar(
         title: const Text('FocusTrack Móvil'),
@@ -171,10 +211,17 @@ class _PantallaPrincipalMetasState extends State<PantallaPrincipalMetas> {
           ),
         ],
       ),
+<<<<<<< HEAD
       // SafeArea garantiza visualización correcta fuera del notch
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(20.0, 24.0, 20.0, 100.0),
+=======
+      // SafeArea garantiza visualizacion correcta fuera del notch
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 24.0),
+>>>>>>> 067ea726ee40c644581ac032d6014b50fa131d99
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -244,6 +291,7 @@ class _PantallaPrincipalMetasState extends State<PantallaPrincipalMetas> {
                 ),
               ),
               const SizedBox(height: 24.0),
+<<<<<<< HEAD
 
               // Reto 1: Selector de Estado de Prioridad
               Text(
@@ -278,10 +326,14 @@ class _PantallaPrincipalMetasState extends State<PantallaPrincipalMetas> {
               const SizedBox(height: 24.0),
 
               // Panel de Información (refleja la prioridad elegida)
+=======
+              // Panel de Informacion Tecnica
+>>>>>>> 067ea726ee40c644581ac032d6014b50fa131d99
               Card(
                 elevation: 1.0,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12.0),
+<<<<<<< HEAD
                   side: BorderSide(
                     color: _prioridad.color,
                     width: 2.0,
@@ -295,15 +347,32 @@ class _PantallaPrincipalMetasState extends State<PantallaPrincipalMetas> {
                     'Renderizado nativo con Impeller y Hot Reload.',
                   ),
                   isThreeLine: true,
+=======
+                  side: BorderSide(color: colores.outlineVariant),
+                ),
+                child: const ListTile(
+                  leading: Icon(Icons.info_outline),
+                  title: Text('Sesión Móvil Activa'),
+                  subtitle: Text(
+                    'Renderizado nativo impulsado por el motor Impeller '
+                    'y gestionado con Hot Reload.',
+                  ),
+>>>>>>> 067ea726ee40c644581ac032d6014b50fa131d99
                 ),
               ),
             ],
           ),
         ),
       ),
+<<<<<<< HEAD
       // Botones Flotantes de Acción
       floatingActionButton: Row(
         mainAxisSize: MainAxisSize.min,
+=======
+      // Botones Flotantes de Accion
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+>>>>>>> 067ea726ee40c644581ac032d6014b50fa131d99
         children: [
           FloatingActionButton(
             heroTag: 'btn_decrementar',
